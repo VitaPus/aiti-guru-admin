@@ -9,14 +9,13 @@ import {
   InputNumber,
   message,
 } from "antd";
-import { PlusOutlined, MoreOutlined } from "@ant-design/icons";
+import { EllipsisOutlined } from "@ant-design/icons";
 import type { ColumnsType } from "antd/es/table";
-import {
-  useProductsTableStore,
-} from "@/features/products/model/productsTable.store";
+import { useProductsTableStore } from "@/features/products/model/productsTable.store";
 import ProductsTableView from "@/features/products/ui/ProductsTableView";
 import type { ProductRow } from "@/features/products/ui/ProductsTableView";
 import styles from "@/features/products/ui/products.table.module.scss";
+import addPillIconUrl from "@/assets/icons/add-pill.svg";
 
 const USD_TO_RUB = 76;
 
@@ -74,7 +73,14 @@ const ProductsTable: React.FC = () => {
       title: "Оценка",
       dataIndex: "rating",
       key: "rating",
-      render: (v) => `${Number(v).toFixed(1)}/5`,
+      render: (v) => {
+        const value = Number(v);
+        return (
+          <span
+            className={value < 3 ? styles.ratingLow : undefined}
+          >{`${value.toFixed(1)}/5`}</span>
+        );
+      },
     },
     {
       title: "Цена,₽",
@@ -118,18 +124,28 @@ const ProductsTable: React.FC = () => {
       },
     },
     {
-      title: "Действия",
+      title: "",
       key: "actions",
       render: () => (
-        <Space>
-          <Button
-            type="primary"
-            shape="circle"
-            icon={<PlusOutlined />}
-            aria-label="Добавить"
-          />
-          <Button shape="circle" icon={<MoreOutlined />} aria-label="Ещё" />
-        </Space>
+        <div className={styles.actionsCell}>
+          <Space size={32} className={styles.actionGroup}>
+            <Button
+              type="primary"
+              shape="circle"
+              icon={
+                <img src={addPillIconUrl} alt="" className={styles.actionIcon} />
+              }
+              aria-label="Добавить"
+              className={styles.actionPrimary}
+            />
+            <Button
+              shape="circle"
+              icon={<EllipsisOutlined />}
+              aria-label="Ещё"
+              className={styles.actionSecondary}
+            />
+          </Space>
+        </div>
       ),
     },
   ];
@@ -149,6 +165,9 @@ const ProductsTable: React.FC = () => {
     return sorted;
   }, [data, sortState]);
 
+  const [page, setPage] = React.useState(1);
+  const [pageSize, setPageSize] = React.useState(5);
+
   const sortMenuItems = [
     { key: "price_asc", label: "Цена ↑" },
     { key: "price_desc", label: "Цена ↓" },
@@ -162,6 +181,7 @@ const ProductsTable: React.FC = () => {
   const handleSortSelect = (key: string) => {
     if (key === "none") {
       setSortState({});
+      setPage(1);
       return;
     }
     const [field, dir] = String(key).split("_");
@@ -169,6 +189,7 @@ const ProductsTable: React.FC = () => {
       field,
       order: dir === "asc" ? "ascend" : "descend",
     });
+    setPage(1);
   };
 
   return (
@@ -179,8 +200,16 @@ const ProductsTable: React.FC = () => {
       columns={columns}
       data={sortedData}
       tableKey={refreshTick}
+      page={page}
+      pageSize={pageSize}
       onRefresh={refresh}
       onOpenAdd={openAdd}
+      onPageChange={(nextPage, nextPageSize) => {
+        setPage(nextPage);
+        if (nextPageSize !== pageSize) {
+          setPageSize(nextPageSize);
+        }
+      }}
       sortMenuItems={sortMenuItems}
       onSortSelect={handleSortSelect}
       addModal={

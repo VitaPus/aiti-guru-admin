@@ -13,6 +13,10 @@
   color: #1d1f23;
 }
 
+.ratingLow {
+  color: #ff3b30;
+}
+
 .stockBars {
   display: flex;
   gap: 4px;
@@ -38,6 +42,12 @@
   margin-bottom: 12px;
 }
 
+.tableWrapper {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+}
+
 .headerTitle {
   font-size: 18px;
   font-weight: 600;
@@ -45,8 +55,124 @@
 
 .headerActions {
   display: inline-flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.headerActions :global(.ant-btn) {
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconImage {
+  width: 42px;
+  height: 42px;
+  display: block;
 }
 
 .fullWidth {
   width: 100%;
+}
+
+.actionPrimary {
+  width: 52px;
+  height: 27px;
+  padding: 0;
+  background-color: transparent;
+  border-color: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.actionIcon {
+  width: 52px;
+  height: 27px;
+  display: block;
+  margin-top: 10px;
+  margin-right: 15px;
+}
+
+.actionPrimary:hover,
+.actionPrimary:focus,
+.actionPrimary:active {
+  background-color: #242edb;
+  border-color: #242edb;
+}
+
+.actionSecondary {
+  color: gray;
+  border-color: gray;
+}
+
+.actionSecondary:hover,
+.actionSecondary:focus,
+.actionSecondary:active {
+  color: #242edb;
+  border-color: #242edb;
+}
+
+.actionGroup {
+  column-gap: 39px;
+}
+
+.actionsCell {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.addButton {
+  background-color: #242edb;
+  border-color: #242edb;
+  width: 147px;
+  height: 42px;
+  margin-bottom: 5px;
+}
+
+.addButton:hover,
+.addButton:focus,
+.addButton:active {
+  background-color: #242edb;
+  border-color: #242edb;
+}
+
+.addPlus {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 6px;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+  line-height: 1;
+}
+
+.table :global(.ant-table-thead > tr > th) {
+  background: transparent;
+  color: gray;
+}
+
+.table :global(.ant-table-cell::before) {
+  display: none;
+}
+
+.table :global(.ant-table) {
+  background: #ffffff;
+}
+
+.paginationRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 12px;
+  gap: 16px;
+}
+
+.paginationInfo {
+  color: gray;
+  font-size: 14px;
 }

@@ -1,13 +1,11 @@
 import React from "react";
 import { Badge, Input } from "antd";
-import {
-  GlobalOutlined,
-  BellOutlined,
-  MessageOutlined,
-  SettingOutlined,
-  SearchOutlined,
-} from "@ant-design/icons";
+import { SearchOutlined } from "@ant-design/icons";
 import styles from "./header.module.scss";
+import globeIconUrl from "@/assets/icons/globe.svg";
+import bellIconUrl from "@/assets/icons/bell.svg";
+import messageIconUrl from "@/assets/icons/message.svg";
+import settingsIconUrl from "@/assets/icons/settings.svg";
 
 type ProductsHeaderProps = {
   value: string;
@@ -36,7 +34,7 @@ const ProductsHeader: React.FC<ProductsHeaderProps> = ({
       <div className={styles.divider} />
       <div className={styles.right}>
         <button className={styles.iconButton} type="button" aria-label="Язык">
-          <GlobalOutlined />
+          <img src={globeIconUrl} alt="" className={styles.iconImage} />
         </button>
         <button
           className={styles.iconButton}
@@ -46,10 +44,10 @@ const ProductsHeader: React.FC<ProductsHeaderProps> = ({
           <Badge
             count={12}
             size="small"
-            color="#2f6bff"
+            color="#797FE9"
             className={styles.badge}
           >
-            <BellOutlined />
+            <img src={bellIconUrl} alt="" className={styles.iconImage} />
           </Badge>
         </button>
         <button
@@ -57,14 +55,14 @@ const ProductsHeader: React.FC<ProductsHeaderProps> = ({
           type="button"
           aria-label="Сообщения"
         >
-          <MessageOutlined />
+          <img src={messageIconUrl} alt="" className={styles.iconImage} />
         </button>
         <button
           className={styles.iconButton}
           type="button"
           aria-label="Настройки"
         >
-          <SettingOutlined />
+          <img src={settingsIconUrl} alt="" className={styles.iconImage} />
         </button>
       </div>
     </header>
