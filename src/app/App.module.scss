@@ -1,0 +1,24 @@
+.app {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.container {
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: clamp(16px, 2vw, 32px);
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.auth {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: clamp(24px, 6vw, 80px);
+}

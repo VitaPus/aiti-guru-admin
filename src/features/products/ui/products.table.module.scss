@@ -1,0 +1,52 @@
+.nameCell {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.brand {
+  font-size: 12px;
+  color: #000000;
+}
+
+.vendorCell {
+  color: #1d1f23;
+}
+
+.stockBars {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.stockBarActive {
+  opacity: 1;
+}
+
+.stockBarInactive {
+  opacity: 0.3;
+}
+
+.stockRect {
+  fill: #949494;
+}
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.headerTitle {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.headerActions {
+  display: inline-flex;
+}
+
+.fullWidth {
+  width: 100%;
+}
