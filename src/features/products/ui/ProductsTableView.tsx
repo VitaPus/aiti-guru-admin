@@ -100,7 +100,6 @@ const ProductsTableView: React.FC<ProductsTableViewProps> = ({
           rowKey="id"
           columns={columns}
           dataSource={pageData}
-          loading={loading}
           className={styles.table}
           rowSelection={{ type: "checkbox" }}
           pagination={false}

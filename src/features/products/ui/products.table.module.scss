@@ -114,10 +114,6 @@
   border-color: #242edb;
 }
 
-.actionGroup {
-  column-gap: 39px;
-}
-
 .actionsCell {
   display: flex;
   justify-content: flex-end;
@@ -131,12 +127,6 @@
   margin-bottom: 5px;
 }
 
-.addButton:hover,
-.addButton:focus,
-.addButton:active {
-  background-color: #242edb;
-  border-color: #242edb;
-}
 
 .addPlus {
   display: inline-flex;
@@ -164,15 +154,22 @@
   background: #ffffff;
 }
 
+.table :global(.ant-table table) {
+  table-layout: fixed;
+}
+
 .paginationRow {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto;
   align-items: center;
-  justify-content: space-between;
   margin-top: 12px;
   gap: 16px;
+  min-height: 32px;
 }
 
 .paginationInfo {
   color: gray;
   font-size: 14px;
+  min-width: 220px;
+  font-variant-numeric: tabular-nums;
 }

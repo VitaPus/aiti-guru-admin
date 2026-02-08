@@ -50,6 +50,7 @@ const ProductsTable: React.FC = () => {
       title: "Наименование",
       dataIndex: "title",
       key: "title",
+      width: "30%",
       render: (_, item) => (
         <div className={styles.nameCell}>
           {item.thumbnail && (
@@ -66,13 +67,15 @@ const ProductsTable: React.FC = () => {
       title: "Вендор",
       dataIndex: "brand",
       key: "brand",
+      width: "12%",
       render: (v) => <span className={styles.vendorCell}>{v ?? "—"}</span>,
     },
-    { title: "Артикул", dataIndex: "sku", key: "sku" },
+    { title: "Артикул", dataIndex: "sku", key: "sku", width: "12%" },
     {
       title: "Оценка",
       dataIndex: "rating",
       key: "rating",
+      width: "10%",
       render: (v) => {
         const value = Number(v);
         return (
@@ -86,12 +89,14 @@ const ProductsTable: React.FC = () => {
       title: "Цена,₽",
       dataIndex: "price",
       key: "price",
+      width: "12%",
       render: (v) => formatRub(v * USD_TO_RUB),
     },
     {
       title: "Количество",
       dataIndex: "stock",
       key: "stock",
+      width: "12%",
       render: (v) => {
         const value = Number(v);
         const level = value >= 60 ? 3 : value >= 20 ? 2 : 1;
@@ -126,9 +131,10 @@ const ProductsTable: React.FC = () => {
     {
       title: "",
       key: "actions",
+      width: "12%",
       render: () => (
         <div className={styles.actionsCell}>
-          <Space size={32} className={styles.actionGroup}>
+          <Space size={32}>
             <Button
               type="primary"
               shape="circle"
